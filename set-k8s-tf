@@ -1,0 +1,13 @@
+#!/bin/bash
+
+echo "Starting ... $1"
+if [ -d ~/.kube ]; then
+    echo '.kube found !!!'
+else
+    echo '.kube not found !!!'
+    mkdir ~/.kube
+fi
+ 
+cat terraform.tfstate | jq -r  .resources[0].instances[0].attributes.kube_config_raw > ~/.kube/config
+
+cat ~/.kube/config
