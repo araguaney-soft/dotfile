@@ -1,0 +1,7 @@
+#!/bin/bash
+
+if [ -z ${CODE_REPOSITORY} ]; then
+  echo "clone ${CODE_REPOSITORY}"
+else
+  echo "project empty!!!!"
+fi
