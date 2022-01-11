@@ -10,3 +10,6 @@ echo "copying scripts to /usr/bin"
 sudo cp ~/.dotfiles/* /usr/bin/ 
 sudo rm /usr/bin/welcome.sh
 
+echo ${CODE_REPOSITORY}
+
+
