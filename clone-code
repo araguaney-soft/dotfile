@@ -2,6 +2,7 @@
 
 if [ ! -z ${CODE_REPOSITORY} ]; then
   echo "clone ${CODE_REPOSITORY}"
+  git clone ${CODE_REPOSITORY}
 else
   echo "project empty!!!!"
 fi
