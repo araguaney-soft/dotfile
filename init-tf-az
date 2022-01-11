@@ -1,0 +1,27 @@
+#!/bin/bash
+
+echo "Starting ..."
+if [ -f main.tf ]; then
+    terraform init
+    if [ $? = 0 ]; then 
+        az account  show
+        if [ $? = 1 ];  then
+            if [ -z $AZ_USER ]; then
+                echo "user:"
+                read -r AZ_USER
+            fi
+        
+            if [ -z $AZ_PASS ]; then
+                echo "password:"
+                read -r AZ_PASS
+            fi
+            az login -u $AZ_USER -p $AZ_PASS
+        fi 
+        if [ $? = 0 ];  then
+            export ARM_SKIP_PROVIDER_REGISTRATION=true
+            terraform plan
+        fi
+    fi
+else
+    echo "Not found \"main.tf\"" 
+fi
